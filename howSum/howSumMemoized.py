@@ -8,9 +8,10 @@ def howSumMemoized(sum, arr, memo = None):
         remainder = sum - item
         itemsForSum = howSumMemoized(remainder, arr, memo)
         if itemsForSum != None:
-            itemsForSum.append(item)
-            memo[sum] = itemsForSum
-            return itemsForSum
+            combinations = itemsForSum.copy()
+            combinations.append(item)
+            memo[sum] = combinations
+            return combinations
     
     memo[sum] = None
     return None

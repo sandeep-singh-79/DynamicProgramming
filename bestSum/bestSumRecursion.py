@@ -5,11 +5,11 @@ def bestSum(sum, arr):
     shortestCombination = None
 
     for item in arr:
-        combination = bestSum(sum - item, arr)
+        remainder = sum - item
+        combination = bestSum(remainder, arr)
         if combination != None:
             combination.append(item)
-            if (shortestCombination
-                    == None) or (len(combination) < len(shortestCombination)):
+            if (shortestCombination == None) or (len(combination) < len(shortestCombination)):
                 shortestCombination = combination
 
     return shortestCombination
