@@ -2,11 +2,9 @@ const canConstruct = (targetStr, wordBank) => {
     if (targetStr.length === 0) return true
 
     for (word of wordBank)
-        if(targetStr.indexOf(word) === 0) {
-            suffix = targetStr.slice(word.length)
-            if(canConstruct(suffix, wordBank) === true)
+        if(targetStr.indexOf(word) === 0) 
+            if(canConstruct(targetStr.slice(word.length), wordBank) === true)
                 return true
-        }
 
     return false
 }
@@ -16,9 +14,8 @@ const canConstructMemoized = (targetStr, wordBank, memo={}) => {
     if (targetStr.length === 0) return true
 
     for (word of wordBank)
-        if(targetStr.indexOf(word) === 0) {
-            suffix = targetStr.slice(word.length)
-            if(canConstructMemoized(suffix, wordBank, memo) === true){
+        if(targetStr.indexOf(word) === 0)
+            if(canConstructMemoized(targetStr.slice(word.length), wordBank, memo) === true){
                 memo[targetStr] = true
                 return true
             }
